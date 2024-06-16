@@ -628,278 +628,281 @@ public class GameMain : MonoBehaviour
 
     public void CheckValidWhiteMove(int x, int y)
     {
-        List<GameObject> goList = new List<GameObject>();
-        for (int i = 1; i < 8; i++)
+        if (BoardGameObject[x, y].GetComponent<SpriteRenderer>().color == Color.clear)
         {
-            if (i + x < 8)
+            List<GameObject> goList = new List<GameObject>();
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x + i, y].GetComponent<SpriteRenderer>().color == Color.black)
+                if (i + x < 8)
                 {
-                    goList.Add(BoardGameObject[x + i, y]);
-                }
-                else if (BoardGameObject[x + i, y].GetComponent<SpriteRenderer>().color == Color.white)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x + i, y].GetComponent<SpriteRenderer>().color == Color.black)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x + i, y]);
                     }
+                    else if (BoardGameObject[x + i, y].GetComponent<SpriteRenderer>().color == Color.white)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (x - i > -1)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x - i, y].GetComponent<SpriteRenderer>().color == Color.black)
+                if (x - i > -1)
                 {
-                    goList.Add(BoardGameObject[x - i, y]);
-                }
-                else if (BoardGameObject[x - i, y].GetComponent<SpriteRenderer>().color == Color.white)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x - i, y].GetComponent<SpriteRenderer>().color == Color.black)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x - i, y]);
                     }
+                    else if (BoardGameObject[x - i, y].GetComponent<SpriteRenderer>().color == Color.white)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (i + y < 8)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x, y + i].GetComponent<SpriteRenderer>().color == Color.black)
+                if (i + y < 8)
                 {
-                    goList.Add(BoardGameObject[x, y + i]);
-                }
-                else if (BoardGameObject[x, y + i].GetComponent<SpriteRenderer>().color == Color.white)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x, y + i].GetComponent<SpriteRenderer>().color == Color.black)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x, y + i]);
                     }
+                    else if (BoardGameObject[x, y + i].GetComponent<SpriteRenderer>().color == Color.white)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (y - i > -1)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x, y - i].GetComponent<SpriteRenderer>().color == Color.black)
+                if (y - i > -1)
                 {
-                    goList.Add(BoardGameObject[x, y - i]);
-                }
-                else if (BoardGameObject[x, y - i].GetComponent<SpriteRenderer>().color == Color.white)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x, y - i].GetComponent<SpriteRenderer>().color == Color.black)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x, y - i]);
                     }
+                    else if (BoardGameObject[x, y - i].GetComponent<SpriteRenderer>().color == Color.white)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (i + x < 8 && i + y < 8)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x + i, y + i].GetComponent<SpriteRenderer>().color == Color.black)
+                if (i + x < 8 && i + y < 8)
                 {
-                    goList.Add(BoardGameObject[x + i, y + i]);
-                }
-                else if (BoardGameObject[x + i, y + i].GetComponent<SpriteRenderer>().color == Color.white)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x + i, y + i].GetComponent<SpriteRenderer>().color == Color.black)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x + i, y + i]);
                     }
+                    else if (BoardGameObject[x + i, y + i].GetComponent<SpriteRenderer>().color == Color.white)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (i + x < 8 && y - i > -1)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x + i, y - i].GetComponent<SpriteRenderer>().color == Color.black)
+                if (i + x < 8 && y - i > -1)
                 {
-                    goList.Add(BoardGameObject[x + i, y - i]);
-                }
-                else if (BoardGameObject[x + i, y - i].GetComponent<SpriteRenderer>().color == Color.white)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x + i, y - i].GetComponent<SpriteRenderer>().color == Color.black)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x + i, y - i]);
                     }
+                    else if (BoardGameObject[x + i, y - i].GetComponent<SpriteRenderer>().color == Color.white)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (x - i > -1 && y - i > -1)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x - i, y - i].GetComponent<SpriteRenderer>().color == Color.black)
+                if (x - i > -1 && y - i > -1)
                 {
-                    goList.Add(BoardGameObject[x - i, y - i]);
-                }
-                else if (BoardGameObject[x - i, y - i].GetComponent<SpriteRenderer>().color == Color.white)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x - i, y - i].GetComponent<SpriteRenderer>().color == Color.black)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x - i, y - i]);
                     }
+                    else if (BoardGameObject[x - i, y - i].GetComponent<SpriteRenderer>().color == Color.white)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (x - i > -1 && i + y < 8)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x - i, y + i].GetComponent<SpriteRenderer>().color == Color.black)
+                if (x - i > -1 && i + y < 8)
                 {
-                    goList.Add(BoardGameObject[x - i, y + i]);
-                }
-                else if (BoardGameObject[x - i, y + i].GetComponent<SpriteRenderer>().color == Color.white)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x - i, y + i].GetComponent<SpriteRenderer>().color == Color.black)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x - i, y + i]);
                     }
+                    else if (BoardGameObject[x - i, y + i].GetComponent<SpriteRenderer>().color == Color.white)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
         }
@@ -908,274 +911,277 @@ public class GameMain : MonoBehaviour
     public void CheckValidBlackMove(int x, int y)
     {
         List<GameObject> goList = new List<GameObject>();
-        for (int i = 1; i < 8; i++)
+        if (BoardGameObject[x, y].GetComponent<SpriteRenderer>().color == Color.clear)
         {
-            if (i + x < 8)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x + i, y].GetComponent<SpriteRenderer>().color == Color.white)
+                if (i + x < 8)
                 {
-                    goList.Add(BoardGameObject[x + i, y]);
-                }
-                else if (BoardGameObject[x + i, y].GetComponent<SpriteRenderer>().color == Color.black)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x + i, y].GetComponent<SpriteRenderer>().color == Color.white)
                     {
-                        for (int j = 0; j < goList.Count; j++)
+                        goList.Add(BoardGameObject[x + i, y]);
+                    }
+                    else if (BoardGameObject[x + i, y].GetComponent<SpriteRenderer>().color == Color.black)
+                    {
+                        if (goList.Count > 0)
                         {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
                         }
-                        goList.Clear();
-                        break;
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
                     }
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (x - i > -1)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x - i, y].GetComponent<SpriteRenderer>().color == Color.white)
+                if (x - i > -1)
                 {
-                    goList.Add(BoardGameObject[x - i, y]);
-                }
-                else if (BoardGameObject[x - i, y].GetComponent<SpriteRenderer>().color == Color.black)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x - i, y].GetComponent<SpriteRenderer>().color == Color.white)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x - i, y]);
                     }
+                    else if (BoardGameObject[x - i, y].GetComponent<SpriteRenderer>().color == Color.black)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (i + y < 8)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x, y + i].GetComponent<SpriteRenderer>().color == Color.white)
+                if (i + y < 8)
                 {
-                    goList.Add(BoardGameObject[x, y + i]);
-                }
-                else if (BoardGameObject[x, y + i].GetComponent<SpriteRenderer>().color == Color.black)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x, y + i].GetComponent<SpriteRenderer>().color == Color.white)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x, y + i]);
                     }
+                    else if (BoardGameObject[x, y + i].GetComponent<SpriteRenderer>().color == Color.black)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (y - i > -1)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x, y - i].GetComponent<SpriteRenderer>().color == Color.white)
+                if (y - i > -1)
                 {
-                    goList.Add(BoardGameObject[x, y - i]);
-                }
-                else if (BoardGameObject[x, y - i].GetComponent<SpriteRenderer>().color == Color.black)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x, y - i].GetComponent<SpriteRenderer>().color == Color.white)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x, y - i]);
                     }
+                    else if (BoardGameObject[x, y - i].GetComponent<SpriteRenderer>().color == Color.black)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (i + x < 8 && i + y < 8)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x + i, y + i].GetComponent<SpriteRenderer>().color == Color.white)
+                if (i + x < 8 && i + y < 8)
                 {
-                    goList.Add(BoardGameObject[x + i, y + i]);
-                }
-                else if (BoardGameObject[x + i, y + i].GetComponent<SpriteRenderer>().color == Color.black)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x + i, y + i].GetComponent<SpriteRenderer>().color == Color.white)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x + i, y + i]);
                     }
+                    else if (BoardGameObject[x + i, y + i].GetComponent<SpriteRenderer>().color == Color.black)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (i + x < 8 && y - i > -1)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x + i, y - i].GetComponent<SpriteRenderer>().color == Color.white)
+                if (i + x < 8 && y - i > -1)
                 {
-                    goList.Add(BoardGameObject[x + i, y - i]);
-                }
-                else if (BoardGameObject[x + i, y - i].GetComponent<SpriteRenderer>().color == Color.black)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x + i, y - i].GetComponent<SpriteRenderer>().color == Color.white)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x + i, y - i]);
                     }
+                    else if (BoardGameObject[x + i, y - i].GetComponent<SpriteRenderer>().color == Color.black)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (x - i > -1 && y - i > -1)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x - i, y - i].GetComponent<SpriteRenderer>().color == Color.white)
+                if (x - i > -1 && y - i > -1)
                 {
-                    goList.Add(BoardGameObject[x - i, y - i]);
-                }
-                else if (BoardGameObject[x - i, y - i].GetComponent<SpriteRenderer>().color == Color.black)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x - i, y - i].GetComponent<SpriteRenderer>().color == Color.white)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x - i, y - i]);
                     }
+                    else if (BoardGameObject[x - i, y - i].GetComponent<SpriteRenderer>().color == Color.black)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
-        }
-        for (int i = 1; i < 8; i++)
-        {
-            if (x - i > -1 && i + y < 8)
+            for (int i = 1; i < 8; i++)
             {
-                if (BoardGameObject[x - i, y + i].GetComponent<SpriteRenderer>().color == Color.white)
+                if (x - i > -1 && i + y < 8)
                 {
-                    goList.Add(BoardGameObject[x - i, y + i]);
-                }
-                else if (BoardGameObject[x - i, y + i].GetComponent<SpriteRenderer>().color == Color.black)
-                {
-                    if (goList.Count > 0)
+                    if (BoardGameObject[x - i, y + i].GetComponent<SpriteRenderer>().color == Color.white)
                     {
-                        for (int j = 0; j < goList.Count; j++)
-                        {
-                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
-                        }
-                        goList.Clear();
-                        break;
+                        goList.Add(BoardGameObject[x - i, y + i]);
                     }
+                    else if (BoardGameObject[x - i, y + i].GetComponent<SpriteRenderer>().color == Color.black)
+                    {
+                        if (goList.Count > 0)
+                        {
+                            for (int j = 0; j < goList.Count; j++)
+                            {
+                                BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            }
+                            goList.Clear();
+                            break;
+                        }
+                        else
+                        {
+
+                            goList.Clear();
+                            break;
+                        }
+                    }
+
                     else
                     {
-
                         goList.Clear();
                         break;
                     }
-                }
-
-                else
-                {
-                    goList.Clear();
-                    break;
                 }
             }
         }
