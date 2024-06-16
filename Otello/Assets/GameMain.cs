@@ -934,7 +934,6 @@ public class GameMain : MonoBehaviour
                         break;
                     }
                 }
-
                 else
                 {
                     goList.Clear();
