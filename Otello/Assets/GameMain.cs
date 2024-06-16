@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class GameMain : MonoBehaviour
 {
-    private int[,] Board = new int[8, 8];
-    private GameObject[,] BoardGameObject = new GameObject[8, 8];
+    public GameObject[,] BoardGameObject = new GameObject[8, 8];
+    public GameObject[,] BoardGameObject2 = new GameObject[8, 8];
     public GameObject BoardPiece;
     public GameObject PiecePrefab;
     internal bool IsWhite = false;
@@ -30,6 +30,7 @@ public class GameMain : MonoBehaviour
                 Piece.GetComponent<PieceScript>().x = i;
                 Piece.GetComponent<PieceScript>().y = j;
                 Piece.GetComponent<PieceScript>().MainGame = this.gameObject;
+                BoardGameObject2[i, j] = Piece;
                 if (_black)
                 {
                     Piece.GetComponent<SpriteRenderer>().color = Color.red;
@@ -49,14 +50,13 @@ public class GameMain : MonoBehaviour
                 GameObject Piece = Instantiate(PiecePrefab, new Vector3(i, j, -2), Quaternion.identity);
                 BoardGameObject[i, j] = Piece;
                 Piece.GetComponent<SpriteRenderer>().color = Color.clear;
-
             }
         }
         BoardGameObject[3, 3].GetComponent<SpriteRenderer>().color = Color.white;
         BoardGameObject[3, 4].GetComponent<SpriteRenderer>().color = Color.black;
         BoardGameObject[4, 4].GetComponent<SpriteRenderer>().color = Color.white;
         BoardGameObject[4, 3].GetComponent<SpriteRenderer>().color = Color.black;
-        CheckValidWhiteMove();
+        CheckValid();
     }
 
     private void Update()
@@ -628,7 +628,6 @@ public class GameMain : MonoBehaviour
 
     public void CheckValidWhiteMove(int x, int y)
     {
-        ClearValid();
         List<GameObject> goList = new List<GameObject>();
         for (int i = 1; i < 8; i++)
         {
@@ -644,7 +643,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -678,7 +677,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
 
                         }
                         goList.Clear();
@@ -713,7 +712,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
 
                         }
                         goList.Clear();
@@ -748,7 +747,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -782,7 +781,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -816,7 +815,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -850,7 +849,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -884,7 +883,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -908,7 +907,6 @@ public class GameMain : MonoBehaviour
 
     public void CheckValidBlackMove(int x, int y)
     {
-        ClearValid();
         List<GameObject> goList = new List<GameObject>();
         for (int i = 1; i < 8; i++)
         {
@@ -924,7 +922,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -958,7 +956,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -992,7 +990,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -1026,7 +1024,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -1060,7 +1058,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -1094,7 +1092,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -1128,7 +1126,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -1162,7 +1160,7 @@ public class GameMain : MonoBehaviour
                     {
                         for (int j = 0; j < goList.Count; j++)
                         {
-                            BoardGameObject[x, y].GetComponent<PieceScript>().ValidMove = true;
+                            BoardGameObject2[x, y].GetComponent<PieceScript>().ValidMove = true;
                         }
                         goList.Clear();
                         break;
@@ -1184,13 +1182,37 @@ public class GameMain : MonoBehaviour
         }
     }
 
+    public void CheckValid()
+    {
+        ClearValid();
+        if (IsWhite)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    CheckValidWhiteMove(i, j);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    CheckValidBlackMove(i, j);
+                }
+            }
+        }
+    }
     public void ClearValid()
     {
         for (int i = 0; i < 8; i++)
         {
             for (int j = 0; j < 8; j++)
             {
-                BoardGameObject[i, j].GetComponent<PieceScript>().ValidMove = false;
+                BoardGameObject2[i, j].GetComponent<PieceScript>().ValidMove = false;
             }
         }
     }

@@ -21,7 +21,8 @@ public class PieceScript : MonoBehaviour
                 MainGame.GetComponent<GameMain>().CheckBlackMove(x, y);
             }
             MainGame.GetComponent<GameMain>().ChangeStatus();
+            MainGame.GetComponent<GameMain>().ClearValid();
         }
-    
+
     }
 }
